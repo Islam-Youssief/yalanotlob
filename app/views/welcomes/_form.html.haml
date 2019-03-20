@@ -1,0 +1,13 @@
+= form_for @welcome do |f|
+  - if @welcome.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@welcome.errors.count, "error")} prohibited this welcome from being saved:"
+      %ul
+        - @welcome.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :greeting
+    = f.text_area :greeting
+  .actions
+    = f.submit 'Save'
