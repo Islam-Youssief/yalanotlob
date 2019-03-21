@@ -17,6 +17,13 @@ class User
 
   ## Database authenticatable
   field :email,              type: String, default: ""
+  ##M
+  field :userName,              type: String, default: ""
+  field :userImage,             type: String, default: ""
+  field :friends_id,            type: BSON::ObjectId, default: ""
+  field :group_id,              type: Array, default: ""
+  validates_uniqueness_of :userName
+  ##M
   field :encrypted_password, type: String, default: ""
   field :provider,           type: String, default: ""
 
