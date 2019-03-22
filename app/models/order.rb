@@ -6,10 +6,11 @@ class Order
   field :status, type: String
   field :date, type: DateTime, default: Time.now
   field :totalPrice, type: Integer, default: 0
-  field :friends, type: Array
-  field :groups, type: Array
+  field :members, type: Array
+  # field :friends, type: Array
+  # field :groups, type: Array
   field :items, type: Array
-  embeds_many :friends, store_as: "friend"
-  embeds_many :groups, store_as: "groups"
+  # embeds_many :friends, store_as: "friends"
+  # embeds_many :groups, store_as: "groups"
   include Mongoid::Timestamps
 end

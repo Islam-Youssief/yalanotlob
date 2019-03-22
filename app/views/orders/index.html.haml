@@ -4,17 +4,15 @@
   %thead
     %tr
       %th Meal
-      %th Restaurantname
-      %th Menuimage
+      %th Restaurant Name
+      %th Menu Image
       %th Status
       %th Date
-      %th Totalprice
-      %th Friends
-      %th Groups
+      %th Total Price
+      -#%th Friends
+      -#%th Groups
       %th Items
-      %th
-      %th
-      %th
+      %th Members
 
   %tbody
     - @orders.each do |order|
@@ -25,9 +23,10 @@
         %td= order.status
         %td= order.date
         %td= order.totalPrice
-        %td= order.friends
-        %td= order.groups
+        -#%td= order.friends
+        -#%td= order.groups
         %td= order.items
+        %td= order.members
         %td= link_to 'Show', order
         %td= link_to 'Edit', edit_order_path(order)
         %td= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
