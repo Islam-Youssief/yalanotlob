@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Meal:
+  = @order.meal
+%p
+  %b Restaurantname:
+  = @order.restaurantName
+%p
+  %b Menuimage:
+  = @order.menuImage
+%p
+  %b Status:
+  = @order.status
+%p
+  %b Date:
+  = @order.date
+%p
+  %b Totalprice:
+  = @order.totalPrice
+%p
+  %b Friends:
+  = @order.friends
+%p
+  %b Groups:
+  = @order.groups
+%p
+  %b Items:
+  = @order.items
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path
