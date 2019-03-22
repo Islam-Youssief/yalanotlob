@@ -1,0 +1,37 @@
+%h1 Listing orders
+
+%table
+  %thead
+    %tr
+      %th Meal
+      %th Restaurantname
+      %th Menuimage
+      %th Status
+      %th Date
+      %th Totalprice
+      %th Friends
+      %th Groups
+      %th Items
+      %th
+      %th
+      %th
+
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.meal
+        %td= order.restaurantName
+        %td= order.menuImage
+        %td= order.status
+        %td= order.date
+        %td= order.totalPrice
+        %td= order.friends
+        %td= order.groups
+        %td= order.items
+        %td= link_to 'Show', order
+        %td= link_to 'Edit', edit_order_path(order)
+        %td= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Order', new_order_path
