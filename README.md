@@ -1,18 +1,24 @@
 # README
 
-Rails App YalaNtlob created with gem turbolog with the following configuration:
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
+Things you may want to cover:
 
-* Ruby version 2.4.1, Rails 5.1.4
+* Ruby version
 
-* MongoDB version v3.6.2
+* System dependencies
 
-Notes: 
+* Configuration
 
-* Please edit .env and update your FACEBOOK_API, FACEBOOK_SECRET
+* Database creation
 
+* Database initialization
 
-* To run the test suite
-  At Terminal type
-  $ rspec
+* How to run the test suite
 
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

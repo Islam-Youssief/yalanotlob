@@ -1,0 +1,50 @@
+
+<%= form_with model: @order, local: true, id: "order" do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+      
+      <%= f.hidden_field :invited_ids %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name, "For" %>
+        <select name="order[meal]" id="order_meal" class="form-control">
+          <option value="breakfast" selected>BreakFast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :resturant %>
+      <%= f.text_field :resturant, class:"form-control" %>
+    </div>
+
+    <div>
+      <%= f.label :invite %><br />
+      <%= f.text_field :invitations , id: "test", class: "form-control" %>
+    </div>
+    <div style='margin-top:3px;margin-bottom:10px;'>
+       <button  type='button' id ='invit' class='btn btn-success'>Add Freind</button>
+    </div>
+    <div class="form-group">
+      <%= f.datetime_field :ends_at %>
+    </div>
+    <div class="">
+      <%= f.file_field :menu %>
+    </div>
+    <div class="">
+      <%= f.submit "add", class: "btn btn-primary" %>
+    </div>
+<% end %>

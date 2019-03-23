@@ -1,0 +1,54 @@
+<div class='container'>
+    <h1>Order details</h1>
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Item</th>
+                <th scope="col">amount</th>
+                <th scope="col">price</th>
+                <th scope="col">comment</th>
+            </tr>
+        </thead>
+        <% @order_informations.each do |ordermember| %>
+        <tbody>
+            <tr>
+                <td>
+                    <%= ordermember.user.name %>
+                </td>
+                <td>
+                    <%= ordermember.item_name %>
+                </td>
+                <td>
+                    <%= ordermember.amount %>
+                </td>
+                <td>
+                    <%= ordermember.item_price %>
+                </td>
+                <td>
+                    <%= ordermember.comment %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% if !@order.menu.blank? %>
+    <%= link_to "menu", @order.menu.url %><br>
+    <%end%>
+    <%= link_to "#{@order.invited_members.count} friends invited, click to view", order_invited_path(@order) %>
+    <br>
+    <% if @order.waiting? %>
+    <h2>Add item:</h2>
+    <%= form_with scope: "order_informations", url: order_add_path(@order), method: :post, local: true, class: "form-inline" do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :order_id, value: @order.id %>
+    <%= f.text_field :item_name, class: "form-control mb-2 mr-sm-2", placeholder: "item name" %>
+    <%= f.text_field :amount, class: "form-control mb-2 mr-sm-2", placeholder: "amount" %>
+    <%= f.text_field :item_price, class: "form-control mb-2 mr-sm-2", placeholder: "item price" %>
+    <%= f.text_field :comment, class: "form-control mb-2 mr-sm-2", placeholder: "comment" %>
+    <div class="actions" style='margin-top:20px;'>
+        <%= f.submit "add", class:"btn btn-primary mb-2 "%>
+    </div>
+    <% end %>
+    <% end %>
+</div>

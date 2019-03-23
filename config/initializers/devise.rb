@@ -3,14 +3,16 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.omniauth :facebook, ENV['FACEBOOK_API'], ENV['FACEBOOK_SECRET']
-
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  config.secret_key = '7a623c57857468cb062f368ece88f48a6b6eff5c86baf4923a96e1ff4ea2dfc0d5e0d6c194e37320581dfe35de5c7ec4a24c4ea7a074d49db93700669f992f43'
+  # config.secret_key = '35e297a686de9b602651106c2f06c12b879de6411d7aa67bc3b2d1904d52015747ba3e665ada4d06bb128dc832b0bb97f58ba748563766e9874bc2f711642df8'
+  
+  # ==> Controller configuration
+  # Configure the parent class to the devise controllers.
+  # config.parent_controller = 'DeviseController'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -28,7 +30,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/mongoid'
+  require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -112,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'd83f211bf20c8e9d2a2a39d5b5521d2d0359c5db92bb0913991abc2d32843ce90e92d4c6085b72009361590f03e7ac2d82ff6beb570aed23fb18fabc6da010b1'
+  # config.pepper = '495b90a231d8f73d10e2e915ac1d9d1cc76f7d9eadd79086b31e2497347138bcb7048e66c8087b926fc4b7dafd9ff0e9803b1d3b36c42e24043e50fcf109f504'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -278,4 +280,11 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  # ==> Turbolinks configuration
+  # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:
+  #
+  # ActiveSupport.on_load(:devise_failure_app) do
+  #   include Turbolinks::Controller
+  # end
 end

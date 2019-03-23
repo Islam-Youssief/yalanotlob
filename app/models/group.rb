@@ -1,7 +1,5 @@
-class Group
-  include Mongoid::Document
-  field :groupName, type: String
-  field :owner, type: BSON::ObjectId
-  field :members, type: String
-  has_and_belongs_to_many :users
+class Group < ApplicationRecord
+  belongs_to :user
+  has_many :group_members, :dependent => :delete_all
+  has_many :users , through: :group_members , :dependent => :delete_all
 end

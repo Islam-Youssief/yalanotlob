@@ -1,0 +1,47 @@
+<div class='container'>
+<h1>Orders</h1>
+
+<%= link_to 'create order', new_order_path, class: "btn btn-success float-right mb-4"%>
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Order</th>
+      <th scope="col">For</th>
+      <th scope="col">Restaurant</th>
+      <th scope="col">Status</th>
+      <th scope="col">Ends in</th>
+      <th scope="col">Invited</th>
+      <th scope="col">Joined</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <% unless order.cancelled? %>
+      <tr>
+        <th scope="row"><%= link_to order.name, order_path(order.id) %></th>
+        <td><%= order.meal %></td>
+        <td><%= order.resturant %></td>
+        <td><%= order.status %></td>
+        <% if order.ends_at %>
+        <td><%= distance_of_time_in_words(Time.now, order.ends_at) %></td>
+        <% else %>
+         <td>-----</td>
+        <%end%>
+        <td><%= order.invited_members.count %></td>
+        <td><%= order.order_informations.select(:user_id).distinct.count %></td>
+        <% unless order.finished? %>
+          <td><%= link_to 'edit', edit_order_path(order.id), class: "btn btn-primary" %></td>
+          <td><%= link_to 'Cancel', order_path(order.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</div>
+
+

@@ -1,0 +1,17 @@
+
+<div class='container'>
+    <div class="row">
+    <div class="col-md-6 mr-4">
+        <h2>New Order</h2>
+        <%= render 'form', order: @order %>
+    </div>
+    <div class="col-md-5 ml-4">
+        <div class="row">
+            <h2>Invited</h2>
+        </div>
+        <div class="row" id="invited-people-list">
+        </div>
+    </div>
+    </div>
+    <%= link_to '<< back', orders_path %>
+</div>

@@ -1,0 +1,23 @@
+<%= form_with(model: friend, local: true) do |form| %>
+  <% if friend && friend.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
+
+      <ul>
+      <% friend.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group text-center">
+    <%= form.label :"Friend Email" , class: "text-center h2" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+
+  <div class="actions form-group text-center">
+    <%= form.submit "Add Friend", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<div class='container'>
+<div class="row">
+    <div class="row justify-content-center mb-4">
+        <h3>Members Joined in <%= @order.name %></h3>
+    </div>
+    <div class="row">
+    <% @joined_members.each do |member| %>
+        <div class="m-1 col-md-5" style="width:45%">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="" width="70px" height="80px" class="p-0 ml-4">
+                </div>
+                <div class="col-md-5 p-0">
+                    <%= link_to member.name, user_path(member.user_id), class: "font-weight-bold"%><br>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>
+</div>

@@ -1,0 +1,21 @@
+<div class='container'>
+<div class="row">
+    <div class="row justify-content-center mb-4">
+        <h3>Members Invited to <%= @order.name %></h3>
+    </div>
+    <div class="row">
+    <% @invited_members.each do |member| %>
+        <div class="m-1 col-5" style="width:45%">
+            <div class="row">
+                <div class="col-4 text-center">
+                    <img src= '/images/1.jpeg' class='img-circle' alt='Cinque Terre' width='170' height='150'>
+                    <p class='text-center'><%=member.name%></p>
+                </div>
+                
+                
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>
+</div>

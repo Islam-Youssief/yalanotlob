@@ -13,10 +13,15 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
 /node_modules
 /yarn-error.log
 
+/public/assets
 .byebug_history
-.env-my
-.git
-.idea/
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

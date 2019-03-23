@@ -1,25 +1,6 @@
-<h1>New Group</h1>
+<h1>Editing Group</h1>
 
-<%= form_with(model: @group, local: true) do |form| %>
- 
- 
-  <p>
-    <%= form.label :GroupName %><br>
-    <%= form.text_field :groupName %>
-  </p>
- 
-<p>
-    <%= form.label :owner %><br>
-    <%= form.text_field :owner %>
-  </p>
+<%= render 'form', group: @group %>
 
- <p>
-    <%= form.label :members %><br>
-    <%= form.text_field :members %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
- 
-<% end %>
+<%= link_to 'Show', @group %> |
 <%= link_to 'Back', groups_path %>

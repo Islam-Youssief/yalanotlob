@@ -1,0 +1,67 @@
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav ">
+    <% if user_signed_in? %>
+       <li >
+        <a href="/">Home</a>
+      </li>
+      <li>
+          <a href="/friends">Friends</a>
+      </li>
+      <li>
+          <a href="/groups">Groups</a>
+      </li>
+      <li>
+          <a href="/orders">Orders</a>
+      </li>
+
+    <% end # if user is signed it %>
+  </ul>
+   <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+           <li style='padding: 10px;padding-right: 0;'><a href style="padding:0"><img src='/images/1.jpeg' width='30' height='30' class='img-circle'></a></li>
+          <li style="color:#FFF"> <a ><%= current_user.name %></a></li>
+           <li>
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+          </li>
+
+          
+            <li class="dropdown text-center" >
+                <a id="dLabel" style='padding-bottom: 0px !important;' role="button" data-toggle="dropdown" data-target="#" href="/page.html"><span class="label label-primary" style="font-size: .9em" id="new_notification_number"><%= @notify.count %></span>
+                    <i class="glyphicon glyphicon-bell" style="font-size: 1.5em">
+                    </i>
+                </a>
+
+                <ul class="dropdown-menu notifications" style ='padding:15px;top: 51px;' role="menu" aria-labelledby="dLabel">
+
+                    <div class="notification-heading">
+                        <h4 class="menu-title text-center" style='color:#fff'>Notifications</h4>
+                    </div>
+                    <li class="divider"></li>
+                    <div class="notifications-wrapper " style='min-width: 278px'>
+                    <% @notify.each do |n| %>
+                        <a class="content" href="/orders/<%=n.order.id%>">
+                            <div class="notification-item">
+                                
+                                <h4 class="item-title"><%= n.order.user.name%><h4>
+                                invited you to new order <small><%= distance_of_time_in_words(Time.now, n.order.created_at)%><small>
+                                </h4>
+                                <p class="item-info">join</p>
+                            </div>
+
+                        </a>
+                         <li class="divider"></li>
+                        <%end%>
+
+                    </div>
+                   
+                   
+                </ul>
+
+            </li>
+           <% else # user not signed it %>
+            <li ><%= link_to 'Login', login_path %></li>
+            <li ><%= link_to 'Signup', signup_path %></li>
+        <% end # if user is signed it %>
+  </ul>
+</div><!-- navbar-collapse -->
